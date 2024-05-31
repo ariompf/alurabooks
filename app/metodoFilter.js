@@ -24,15 +24,17 @@ function filtrarPorCategiria(categoria) {
 document.getElementById('btnLivrosDisponiveis').addEventListener('click', filtrarLivrosDisponiveis);
 
  function filtrarLivrosDisponiveis() {
-    const livrosDisponiveis = livros.filter(livro => livro.quantidade > 0);
-    exibirOsLivrosNaTela(livrosDisponiveis);
-    exibirComValorTotalDeLivrosDisponiveis()
+    const livrosDisponiveis = livros.filter(livro => livro.quantidade > 0)
+    exibirOsLivrosNaTela(livrosDisponiveis)
+    const valorTotal = calcularValorTotalDeLivrosDisponiveis(livrosDisponiveis)
+    //console.log(valorTotal)
+    exibirComValorTotalDeLivrosDisponiveis(valorTotal)
 };
 
-function exibirComValorTotalDeLivrosDisponiveis() {
+function exibirComValorTotalDeLivrosDisponiveis(valorTotal) {
     elementoComValorTotalDeLivrosDisponiveis.innerHTML = `
     <div class="livros__disponiveis">
-    <p>Todos os livros disponíveis por R$ <span id="valor">299,00</span></p>
+    <p>Todos os livros disponíveis por R$ <span id="valor">${valorTotal}</span></p>
   </div>
     `
 }
